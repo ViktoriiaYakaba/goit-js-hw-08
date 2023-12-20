@@ -86,7 +86,7 @@ let instance;
 gallery.addEventListener('click', function(event) {
  event.preventDefault();
   if (event.target.tagName === 'IMG') {
-    const largeImage = event.target.getAttribute('src');
+    const largeImage = event.target.dataset.source;
     console.log(largeImage);
 
     const originalSrc = event.target.dataset.source;
@@ -94,13 +94,15 @@ gallery.addEventListener('click', function(event) {
       `<img width="1112" height="640" src="${originalSrc}">`
     );
     instance.show();
- 
+  document.addEventListener("keydown", handleKeyDown);
   }
 });
 
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
-    instance.close();
+function handleKeyDown(event) {
+  if (event.key === "Escape") {
+    modal.close();
   }
-});
-
+}
+function onClose(instance){
+  instance.removeEventListener("keydown", handleKeyDown);
+};
