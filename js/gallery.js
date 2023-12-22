@@ -100,7 +100,7 @@ gallery.addEventListener('click', function(event) {
 
 function handleKeyDown(event) {
   if (event.key === "Escape") {
-    modal.close();
+    instance.close();
   }
 }
 function onClose(instance){
